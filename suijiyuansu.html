@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>节点</title>
+</head>
+<style>
+    .circle{
+        width: 200px;
+        height: 200px;
+        position:absolute ;
+        top:0;
+        left:0;
+        border-radius: 50%;
+        transition: all .5s;
+    }
+</style>
+<body>
+    创建随机节点
+
+</body>
+</html>
+<script>
+    window.onload = function () {
+        for(let i = 1;i<50;i++){
+            //        创建一个元素
+            let divs = document.createElement('div');
+            divs.className = 'circle';
+//            设置随机大小，30-100
+            let widths = Math.floor(Math.random()*70+30);
+//            设置随机颜色
+            function bg(){
+                let r = Math.floor(Math.random()*255);
+                let g = Math.floor(Math.random()*255);
+                let b = Math.floor(Math.random()*255);
+                return `rgb(${r},${g},${b})`;
+            }
+//        设置随机位置
+            let lefts = Math.floor(Math.random()*(innerWidth - 100));
+            let tops = Math.floor(Math.random()*(innerHeight - 100));
+
+            divs.style.cssText = `width:${widths}px;height:${widths}px;left:${lefts}px;top:${tops}px;background:${bg()}`;
+            setInterval(function () {
+                divs.style.cssText = `width:${widths}px;height:${widths}px;left:${lefts}px;top:${tops}px;background:${bg()}`;
+            },100);
+            document.body.appendChild(divs);
+        }
+
+
+    };
+
+</script>
